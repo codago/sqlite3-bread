@@ -1,0 +1,8 @@
+CREATE TABLE bread(
+   id INTEGER PRIMARY KEY AUTOINCREMENT,
+   string TEXT NOT NULL,
+   integer INTEGER NOT NULL,
+   float FLOAT NOT NULL,
+   date DATE NOT NULL,
+   boolean BOOLEAN NOT NULL
+);

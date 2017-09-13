@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/bootstrap.css">
+  <title><%= title %></title>
+  <h1> <center><%=header %> (Browse, Read, Edit, Add, Delete)</center></h1>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3>Filter</h3>
+      </div>
+      <div class="panel-body">
+        <% include filter %>
+
+      </div>
+    </div>
+
+
+<table class="table table-striped ">
+<thead>
+    <tr>
+      <th width="300px">ID</th>
+      <th width="300px">String</th>
+        <th width="300px">Integer</th>
+      <th width="300px">Float</th>
+      <th width="300px"> Date </th>
+      <th width="300px">Boolean </th>
+      <th width="300px"> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (rows.length > 0) { %>
+      <% for (let i=0; i< rows.length; i++){ %>
+    <tr>
+      <td> <%= rows[i].id %> </td>
+      <td> <%= rows[i].string %> </td>
+      <td> <%= rows[i].integer %> </td>
+      <td> <%= rows[i].float %> </td>
+      <td> <%= rows[i].date %> </td>
+      <td> <%= rows[i].boolean ? 'true' : 'false' %> </td>
+      <td><a href="edit/<%= rows[i].id %>" class="btn btn-success"> Edit </a>&nbsp; <a href="delete/<%=rows[i].id%>" onclick="return confirm('Apakah Anda Yakin Menghapus Data Ini?');" class="btn btn-danger"> Delete </a></td>
+    </tr>
+    <% } %>
+    <% }else { %>
+        <tr>
+          <td colspan="7"> data kosong </td>
+        </tr>
+        <% } %>
+      </tbody>
+</table>
+<ul class="pagination">
+  <% if(pagination.page > 1){ %><li><a href="/?page=<%= pagination.page - 1 %>">Previous</a></li> <% } %>
+  <% for(let i = 1; i <= pagination.pages; i++){ %>
+  <li><a href="/?page=<%= i %>"><%= i %></a></li>
+  <% } %>
+  <% if(pagination.pages > pagination.page){ %><li><a href="/?page=<%= pagination.page + 1 %>">Next</a></li> <% } %>
+</ul>
+<p><%= `Showing ${pagination.offset + 1} to ${pagination.offset + pagination.limit} of ${pagination.total} ${(pagination.total > 1) ? 'entries' : 'entry'}` %></p>
+<br>
+<a href="add" class="btn btn-primary"> ADD </a>
+</div>
+</body>
+</html>
