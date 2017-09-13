@@ -27,6 +27,7 @@ app.use(function(req, res, next) {
 
 //router
 app.get('/', function(req, res) {
+  let url = (req.url == "/") ? "/?page=1" : req.url;
   //filter
   let filter = []
   let isFilter = false;
@@ -81,7 +82,7 @@ app.get('/', function(req, res) {
         console.error(err)
         return res.send(err);
       }
-      res.render('list', {title: "BREAD",header: "BREAD", rows: rows, pagination:{page: page, limit: limit, offset: offset, pages: pages, total: total}, query: req.query});
+      res.render('list', {title: "BREAD",header: "BREAD", rows: rows, pagination:{page: page, limit: limit, offset: offset, pages: pages, total: total, url: url}, query: req.query});
     });
   });
 });

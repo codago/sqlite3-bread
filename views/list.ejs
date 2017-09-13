@@ -53,13 +53,13 @@
       </tbody>
 </table>
 <ul class="pagination">
-  <% if(pagination.page > 1){ %><li><a href="/?page=<%= pagination.page - 1 %>">Previous</a></li> <% } %>
+  <% if(pagination.page > 1){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page - 1}`) %>">Previous</a></li> <% } %>
   <% for(let i = 1; i <= pagination.pages; i++){ %>
-  <li><a href="/?page=<%= i %>"><%= i %></a></li>
+  <li class="<%= (pagination.page == i) ? 'active' : ''%>"><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${i}`) %>"><%= i %></a></li>
   <% } %>
-  <% if(pagination.pages > pagination.page){ %><li><a href="/?page=<%= pagination.page + 1 %>">Next</a></li> <% } %>
+  <% if(pagination.pages > pagination.page){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page + 1}`) %>">Next</a></li> <% } %>
 </ul>
-<p><%= `Showing ${pagination.offset + 1} to ${pagination.offset + pagination.limit} of ${pagination.total} ${(pagination.total > 1) ? 'entries' : 'entry'}` %></p>
+<p><%= `Showing ${pagination.offset + 1} to ${(pagination.offset + pagination.limit > pagination.total) ? pagination.total : pagination.offset + pagination.limit} of ${pagination.total} ${(pagination.total > 1) ? 'entries' : 'entry'}` %></p>
 <br>
 <a href="add" class="btn btn-primary"> ADD </a>
 </div>
