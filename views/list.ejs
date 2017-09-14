@@ -1,0 +1,155 @@
+<% include partials/header %>
+<style>
+h1 {text-align: center;}
+</style>
+  <h1>CRUD (Create - Read - Update - Delete)</h1>
+  <br>
+
+  <div class="container">
+
+    <div class="jumbotron">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h2 class="panel-title">BREAD (Browse, Read, Edit, Add, Delete)</h3>
+            <h3 class="panel-title">Filters</h3>
+      </div>
+      <div class="panel-body">
+        <div id=menu>
+          <a class="btn btn-default" href="/">Home</a>
+      </div>
+
+      <form class="" action="" method="get">
+        <input type="hidden" name="page" value="<%= pagination.page %>">
+        <table style="width:100%;">
+          <tr>
+            <td>
+              <input type="checkbox" name="cid" value="true"<%= query.cid ? ' checked' : '' %>>
+            </td>
+            <td>
+              <label for="id">ID</label>
+            </td>
+            <td>
+              <input id="id" class="form-control" type="text" name="id" value="<%= query.id %>" placeholder="ID">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" name="cstring" value="true"<%= query.cstring ? ' checked' : '' %>>
+            </td>
+            <td>
+              <label for="string">String</label>
+            </td>
+            <td>
+              <input id="string" class="form-control" type="text" name="string" value="<%= query.string %>" placeholder="Input (dalam string)">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" name="cinteger" value="true"<%= query.cinteger ? ' checked' : '' %>>
+            </td>
+            <td>
+              <label for="integer">Integer</label>
+            </td>
+            <td>
+              <input id="integer" class="form-control" type="text" name="integer" value="<%= query.integer %>" placeholder="Integer">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" name="cfloat" value="true"<%= query.cfloat ? ' checked' : '' %>>
+            </td>
+            <td>
+              <label for="float">Float</label>
+            </td>
+            <td>
+              <input id="float" class="form-control" type="text" name="float" value="<%= query.float %>" placeholder="Float">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" name="cdate" value="true"<%= query.cdate ? ' checked' : '' %>>
+            </td>
+            <td>
+              <label for="date">Date</label>
+            </td>
+            <td>
+              <table style="width:100%;">
+                <tr>
+                  <td>
+                    <input id="startdate" class="form-control" type="date" name="startdate" value="<%= query.startdate %>" placeholder="Start Date">
+                  </td>
+                  <td>&nbsp;to&nbsp;</td>
+                  <td>
+                    <input id="enddate" class="form-control" type="date" name="enddate" value="<%= query.enddate %>" placeholder="End Date">
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" name="cboolean" value="true"<%= query.cboolean ? ' checked' : '' %>>
+            </td>
+            <td>
+              <label for="boolean">Boolean</label>
+            </td>
+            <td>
+              <select id="boolean" class="form-control" name="boolean">
+                <option value=""<%= query.boolean == "" ? ' selected' : '' %>>Choose the boolean....</option>
+                <option value="true"<%= query.boolean == "true" ? ' selected' : '' %>>true</option>
+                <option value="false"<%= query.boolean == "false" ? ' selected' : '' %>>false</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <button type="submit" name="search" class="btn btn-primary">Search</button>
+        <a href="/" class="btn btn-danger">Reset</a>
+      </form>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>String</th>
+          <th>Integer</th>
+          <th>Float</th>
+          <th>Date</th>
+          <th>Boolean</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i<rows.length; i++) {%>
+        <tr>
+          <td><%=rows[i].id %></td>
+          <td><%=rows[i].string %></td>
+          <td><%=rows[i].integer %></td>
+          <td><%=rows[i].float %></th>
+          <td><%=rows[i].date %></th>
+          <td><%=rows[i].boolean %></th>
+          <td>
+              <a class="btn btn-success" href="edit/<%=rows[i].id %>">edit</a>
+              <a class ="btn btn-danger" onclick="return confirm('Are you sure?')" href="delete/<%=rows[i].id %>">delete</a>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+       <a class="btn btn-info" href="add">Add</a>
+      </div>
+    </div>
+
+    <ul class="pagination">
+  <% if(pagination.page > 1){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page - 1}`) %>">Previous</a></li> <% } %>
+  <% for(var i = 1; i <= pagination.pages; i++){ %>
+  <li class="<%= (pagination.page == i) ? 'active' : ''%>"><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${i}`) %>"><%= i %></a></li>
+  <% } %>
+  <% if(pagination.pages > pagination.page){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page + 1}`) %>">Next</a></li> <% } %>
+</ul>
+<p><%= `Showing ${pagination.offset + 1} to ${(pagination.offset + pagination.limit > pagination.total) ? pagination.total : pagination.offset + pagination.limit} of ${pagination.total} ${(pagination.total > 1) ? 'entries' : 'entry'}` %></p>
+<br>
+    </div>
+</div>
+
+
+
+<% include partials/footer %>
