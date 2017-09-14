@@ -53,7 +53,7 @@ app.get('/', function(req, res) {
     isFilter = true;
   }
   if(req.query.cboolean && req.query.boolean){
-    filter.push(`boolean = '${JSON.parse(req.query.boolean) ? 'True' : 'False'}'`);
+    filter.push(`boolean = '${JSON.parse(req.query.boolean) ? 'true' : 'false'}'`);
     isFilter = true;
   }
   if(isFilter){
