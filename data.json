@@ -1,0 +1,34 @@
+[
+   {
+      "id": 1503559416969,
+      "string": "Testing Data",
+      "integer": "12",
+      "float": "1,45",
+      "date": "2017-12-12",
+      "boolean": "true"
+   },
+   {
+      "id": 1503559456028,
+      "string": "Coba lagi",
+      "integer": "99",
+      "float": "100,405",
+      "date": "2017-11-20",
+      "boolean": "false"
+   },
+   {
+      "id": 1503559486116,
+      "string": "Super Sekali",
+      "integer": "0",
+      "float": "1,45",
+      "date": "",
+      "boolean": "false"
+   },
+   {
+      "id": 1503559537318,
+      "string": "asal",
+      "integer": "kemana",
+      "float": "12",
+      "date": "2017-08-11",
+      "boolean": "false"
+   }
+]

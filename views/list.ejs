@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+  <div class="container">
+    <h1> <center> Bread </center> </h1>
+    <h1> <center> (Browse,Read,Edit,Add,Delete) </center> </h1>
+    <% include filter %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>String</th>
+          <th>integer</th>
+          <th>Float</th>
+          <th>Date</th>
+          <th>Boolean</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (rows.length > 0) { %>
+          <% for (var i=0; i< rows.length; i++){ %>
+            <tr>
+              <td><%= rows[i].id %></td>
+              <td><%= rows[i].string %></td>
+              <td><%= rows[i].integer %></td>
+              <td><%= rows[i].float %></td>
+              <td><%= rows[i].date %></td>
+              <td><%= rows[i].boolean %></td>
+              <td>
+                <a href="edit/<%= rows[i].id%>" class="btn btn-success">Edit</a>&nbsp;
+                <a href="delete/<%= rows[i].id%>" onclick="return confirm('Yakin mau dihapus?');" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+            <% } %>
+            <% }else { %>
+              <tr>
+                <td colspan="7"> data kosong </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table> <br>
+          <ul class="pagination">
+          <% if(pagination.page > 1){ %>  <li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page -1}`) %>">Previous</a></li> <% } %>
+          <% for(let i = 1; i <= pagination.pages; i++){ %>
+            <li<%= (pagination.page == i) ? ' class=active' : "" %>><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${i}`) %>"><%= i %></a></li>
+            <% } %>
+            <% if(pagination.pages > pagination.page){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page +1}`) %>">Next </a></li> <% } %>
+          </ul>
+          <a href="add" class="btn btn-primary">Tambah</a>
+        </div>
+      </body>
+      </html>
