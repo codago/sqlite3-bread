@@ -21,40 +21,40 @@
         <form method="get" action="/">
           <div class="form-group row">
             <label for="id" class="col-2 col-form-label">
-  <input class="messageCheckbox" type="checkbox" name="checkbox_id" id="checkbox_id" value="value" >ID
+  <input class="messageCheckbox" type="checkbox" <%= checkbox_id ? "checked": '' %>name="checkbox_id" id="checkbox_id" value="value" >ID
   </label>
             <div class="col-10">
-              <input id="id" class="form-control" type="number" name="id" placeholder="ID">
+              <input id="id" class="form-control" type="number" name="id" placeholder="ID" value="<%= id ? id:''%>">
             </div>
           </div>
           <div class="form-group row">
-            <label for="string" class="col-2 col-form-label"><input class="messageCheckbox" type="checkbox" name="checkbox_string" id="checkbox_string" value="value">String</label>
+            <label for="string" class="col-2 col-form-label"><input class="messageCheckbox" type="checkbox" <%= checkbox_string ? "checked": '' %> name="checkbox_string" id="checkbox_string" value="value">String</label>
             <div class="col-10">
-              <input id="string" class="form-control" name="string" placeholder="String">
+              <input id="string" class="form-control" name="string" placeholder="String" value="<%= string ? string:''%>">
             </div>
           </div>
           <div class="form-group row">
-            <label for="integer" class="col-2 col-form-label"><input class="messageCheckbox" type="checkbox" name="checkbox_integer" id="checkbox_integer" value="value">Integer</label>
+            <label for="integer" class="col-2 col-form-label"><input class="messageCheckbox" type="checkbox" <%= checkbox_integer ? "checked": '' %> name="checkbox_integer" id="checkbox_integer" value="value">Integer</label>
             <div class="col-10">
-              <input id="integer" class="form-control" name="integer" placeholder="Integer">
+              <input id="integer" class="form-control" name="integer" placeholder="Integer" value="<%= integer ? integer:''%>">
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="float" class="col-2 col-form-label"><input class="messageCheckbox" type="checkbox" name="checkbox_float" id="checkbox_float" value="value">Float</label>
+            <label for="float" class="col-2 col-form-label"><input class="messageCheckbox" type="checkbox" <%= checkbox_float ? "checked": '' %> name="checkbox_float" id="checkbox_float" value="value">Float</label>
             <div class="col-10">
-              <input id="float" class="form-control" name="float" placeholder="Float">
+              <input id="float" class="form-control" name="float" placeholder="Float" value="<%= float ? float:''%>">
             </div>
           </div>
 
           <div class="form-group row">
-            <label for="date" class="col-2 col-form-label"><input class="messageCheckbox" type="checkbox" name="checkbox_date" id="checkbox_date" value="value">Date</label>
+            <label for="date" class="col-2 col-form-label"><input class="messageCheckbox" type="checkbox" <%= checkbox_date ? "checked": '' %> name="checkbox_date" id="checkbox_date" value="value">Date</label>
             <div class="col-3">
-              <input id="start_date" class="form-control" type="text" name="start_date" placeholder="start date">
+              <input id="start_date" class="form-control" type="text" name="start_date" placeholder="start date" value="<%= startDate ? startDate:''%>">
             </div>
             <p>to</p>
             <div class="col-3">
-              <input id="end_date" class="form-control" type="text" name="end_date" placeholder="end date">
+              <input id="end_date" class="form-control" type="text" name="end_date" placeholder="end date" value="<%= endDate ? endDate:''%>" >
             </div>
           </div>
 
@@ -62,12 +62,12 @@
 
             <label for="boolean" class="col-2 col-form-label">
 
-              <input class="messageCheckbox" type="checkbox" name="checkbox_boolean" id="checkbox_boolean" value="value">Boolean</label>
+              <input class="messageCheckbox" type="checkbox" <%= checkbox_boolean ? "checked": '' %> name="checkbox_boolean" id="checkbox_boolean" value="value">Boolean</label>
             <div class="col-10">
               <select id="boolean" class="form-control" name="boolean" placeholder="Choose the boolean ..." id="boolean">
         <option>Choose the boolean ...</option>
-      <option>true</option>
-      <option>false</option>
+      <option <%= boolean == 'true' ? ' selected' : ''; %>>true</option>
+      <option <%= boolean == 'false' ? ' selected' : ''; %>>false</option>
     </select>
             </div>
           </div>
@@ -140,7 +140,7 @@
 <% var count = 0; %>
 <% for(var i=0;i<dataAll;i+=5){ %>
 <% count++ %>
-<li class="page-item">
+<li class="<%=((i-5) == prev) ?'page-item active':''%>">
 <%if(queryLength >= 0 && queryLength <= 1){%>
 <a class="page-link" href="/?pages=<%=i%>">
 <%} else{%>

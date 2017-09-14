@@ -36,8 +36,10 @@ class Bread {
       for(let i=0;i<arrArg.length;i++){
 
       if(i<5){
-        if(arrArg[i] === "Choose the boolean ...")count--;
-        if(arrArg[i]){
+
+        if(arrArg[i] === "Choose the boolean ..."){
+          arrArg[i] = null;
+        }else if(arrArg[i]){
           count++;
           if(count === 1){
             tempStr = arrDatabase[i] +` = `+ `'${arrArg[i]}'`;
@@ -45,15 +47,9 @@ class Bread {
             tempStr += ' and '+arrDatabase[i] +` = `+ `'${arrArg[i]}'`;
           }
         }
-        if(i === arrArg.length-1){
-          if(count === 0){
-            tempStr = `dataID = '${arrArg[0]}'`
-          }
-        }
       }else if(i>=5){
         arrArg[6] = endDate;
         if(arrArg[i] && arrArg[i+1]){
-
           count++;
           if(count === 1){
             tempStr = arrDatabase[i] +` between `+ `'${arrArg[i]}'`+"and"+`'${arrArg[i+1]}'`

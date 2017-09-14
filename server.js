@@ -42,6 +42,8 @@ app.get("/", function(req, res) {
           prev = Number(pages) - 5;
           next = Number(pages) + 5;
         }
+
+        console.log(next);
         res.render("index", {
           title: "Sqlite3 Bread",
           dataLimit: data,
@@ -55,6 +57,12 @@ app.get("/", function(req, res) {
           startDate:"",
           endDate:"",
           boolean:"",
+          checkbox_id:"",
+          checkbox_string:"",
+          checkbox_integer:"",
+          checkbox_float:"",
+          checkbox_boolean:"",
+          checkbox_date:"",
           url:"",
           filter:"",
           queryLength:queryLength
@@ -154,7 +162,12 @@ app.get("/", function(req, res) {
                 startDate:"",
                 endDate:"",
                 boolean:"",
+                checkbox_id:"",
+                checkbox_string:"",
+                checkbox_integer:"",
+                checkbox_float:"",
                 checkbox_boolean:"",
+                checkbox_date:"",
                 url:"",
                 filter:"",
                 queryLength:queryLength
@@ -172,25 +185,6 @@ app.get("/add", function(req, res) {
     title: "Sqlite3 Bread"
   });
 });
-
-// app.get("/:skip", function(req, res) {
-//   bread.readAll(db, function(dataAll) {
-//     bread.pageIndex(db, req.params.skip, function(data) {
-//       var prev, next;
-//       if (Number(req.params.skip) >= 0) {
-//         prev = Number(req.params.skip) - 5;
-//         next = Number(req.params.skip) + 5;
-//       }
-//       res.render("index", {
-//         title: "Sqlite3 Bread",
-//         prev: prev,
-//         next: next,
-//         dataLimit: data,
-//         dataAll: dataAll.length
-//       });
-//     });
-//   });
-// });
 
 app.post("/add", function(req, res) {
   let string = req.body.string;
