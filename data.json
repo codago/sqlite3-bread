@@ -1,0 +1,65 @@
+[
+   {
+      "id": 1503558380868,
+      "string": "12",
+      "integer": "13",
+      "float": "131",
+      "boolean": "true",
+      "date": ""
+   },
+   {
+      "id": 1503558458059,
+      "string": "2",
+      "integer": "312",
+      "float": "31",
+      "boolean": "True"
+   },
+   {
+      "id": 1503558530582,
+      "string": "321",
+      "integer": "131",
+      "float": "123",
+      "date": "2017-08-18",
+      "boolean": "true"
+   },
+   {
+      "id": 1503560238793,
+      "string": "",
+      "integer": "",
+      "float": "",
+      "date": "",
+      "boolean": "True"
+   },
+   {
+      "id": 1503564207525,
+      "string": "",
+      "integer": "",
+      "float": "",
+      "date": "",
+      "boolean": "True"
+   },
+   {
+      "id": 1505211079240,
+      "string": "121",
+      "integer": "13",
+      "float": "213",
+      "date": "2017-09-08",
+      "boolean": "True"
+   },
+   {
+      "id": 1505271736458,
+      "string": "",
+      "integer": "",
+      "float": "",
+      "date": "",
+      "boolean": "True"
+   },
+   {
+      "id": 1505275384994,
+      "string": "Mikha",
+      "integer": "1",
+      "float": "-0.2",
+      "date": "2017-09-07",
+      "boolean": "True"
+   }
+]
