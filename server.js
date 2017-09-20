@@ -56,7 +56,7 @@ app.get('/', function(req, res) {
     isFilter = true;
   }
   if(isFilter){
-    sql += ' WHERE ' + filter.join(' AND ')
+    sql += ' WHERE '+ filter.join(' AND ')
   }
   // console.log(sql,'satu');
 // count record on table
