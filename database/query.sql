@@ -1,0 +1,11 @@
+CREATE TABLE bread (
+	id INTEGER NOT NULL,
+	string TEXT NOT NULL,
+	integer INTEGER NOT NULL,
+	float NUMERIC NOT NULL,
+	date REAL NOT NULL,
+	boolean BOOLEAN NOT NULL,
+	PRIMARY KEY(id)
+);
+
+DROP TABLE bread.db.bread;
