@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <title> EDIT </title>
+</head>
+<body>
+  <h2>EDIT FORM</h2>
+  <h3>Filter</h3>
+
+  <form action="<%= item.id %>" method="post" class="form-horizontal">
+  <div class="form-group">
+    <label for="string" class="col-sm-2 control-label">String</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="string"  placeholder="string" value="<%= item.string%>"/>
+    </div>
+  </div>
+<br>
+  <div class="form-group">
+    <label for="integer" class="col-sm-2 control-label">Integer</label>
+    <div class="col-sm-6">
+      <input type="number" class="form-control" name="integer"  placeholder="integer" value="<%= item.integer%>"/>
+    </div>
+  </div>
+<br>
+<div class="form-group">
+  <label for="float" class="col-sm-2 control-label">Float</label>
+  <div class="col-sm-6">
+    <input type="float" class="form-control" name="float"  placeholder="float" accept=""value="<%= item.float%>"/>
+  </div>
+</div>
+<br>
+  <div class="form-group">
+    <label for="date" class="col-sm-2 control-label">Date</label>
+    <div class="col-sm-6">
+      <input type="date" class="form-control" name="date"  placeholder="date" value="<%= item.date%>"/>
+    </div>
+  </div>
+<br>
+  <div class="form-group">
+    <label for="boolean" class="col-sm-2 control-label">Boolean</label>
+    <div class="col-sm-4">
+    <select name="boolean" class="form-control">
+    <option value="true"> True </option>
+    <option value="false"> False </option>
+  </select>
+  <br><br>
+  <form action="" method="post">
+    <button type="submit" class ="btn btn-primary">Update</button>
+    </form>
+  </body>
+  </html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <title> List </title>
+</head>
+<body>
+  <h2>BREAD (BROWSE, READ, EDIT, ADD)</h2>
+  <h3> Filter</h3>
+
+  <div class="container">
+
+<form action="/" method="get" class="form-horizontal" >
+    <input type="hidden" name="page" value="<%= pagination.page %>">
+
+  <div class="form-group">
+    <label for="id" class="col-sm-2 control-label">
+      <input type="checkbox" name="check_id" value="true"<%= query.check_id ? ' checked' : '' %>> ID
+    </label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="id" placeholder="ID Number" value="<%= query.id %>">
+    </div>
+  </div>
+    <br>
+
+  <div class="form-group">
+    <label for="string" class="col-sm-2 control-label">
+      <input type="checkbox" name="check_string" value="true"<%= query.check_string ? ' checked' : '' %>> String
+   </label>
+    <div class="col-sm-6">
+     <input type="text" class="form-control" name="string" value="<%= query.string %>" placeholder="String">
+   </div>
+  </div>
+  <br>
+
+<div class="form-group">
+  <label for="integer" class="col-sm-2 control-label">
+    <input type="checkbox" name="check_integer" value="true"<%= query.check_integer ? ' checked' : '' %>> Integer
+  </label>
+  <div class="col-sm-6">
+    <input type="number" step ="1" class="form-control" name="integer" value="<%= query.integer %>" placeholder="Integer">
+  </div>
+</div>
+    <br>
+
+    <div class="form-group">
+      <label for="flat" class="col-sm-2 control-label">
+        <input type="checkbox" name="check_float" value="true"<%= query.check_float ? ' checked' : '' %>> Float
+      </label>
+      <div class="col-sm-6">
+        <input type="number" step ="0.1" class="form-control" name="float" value="<%= query.float %>" placeholder="Float ">
+      </div>
+    </div>
+      <br>
+      <div class="form-group">
+        <label for="date" class="col-sm-2 control-label">
+          <input type="checkbox" name="check_date" value="check_date"<%= query.check_date ? ' checked' : '' %>> Date
+        </label>
+        <div class="col-sm-6">
+          <input type="date" class="form-control" name="startdate" value="<%= query.startdate %>">
+          To
+          <input type="date" class="form-control" name="enddate" value="<%= query.enddate %>">
+          </div>
+        </div>
+        <br><br>
+
+  <div class="form-group">
+    <label for="boolean" class="col-sm-2 control-label">
+      <input type="checkbox" name="check_boolean" value="true"<%= query.check_boolean ? ' checked' : '' %>> Boolean
+    </label>
+  <div class="col-sm-6">
+      <select name="boolean" class="form-control">
+        <option value="null">Choose the boolean</option>
+        <option value="true"<%= query.boolean == "true" ? ' selected' : ''; %>>True</option>
+        <option value="false"<%= query.boolean == "false" ? ' selected' : ''; %>>False</option>
+      </select>
+  </div>
+<br><br>
+
+    <button type="submit" class ="btn btn-primary">Search</button>
+        <a href="/" class ="btn btn-primary">Reset</a>
+  </form>    <title> Filter </title>
+  <br><br>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th> <center> ID </th> </center>
+          <th> <center> String </th> </center>
+          <th> <center> integer </th> </center>
+          <th> <center> Float </th> </center>
+          <th> <center> Date </th> </center>
+          <th> <center> Boolean </th> </center>
+          <th width="600px"> <center> Action </th> </center>
+        </tr>
+        </thead>
+
+    <tbody>
+      <% if (data.length > 0) { %>
+        <% for (var i=0; i< data.length; i++){ %>
+      <tr>
+        <td> <%= data[i].id %></td>
+        <td> <%= data[i].string %> </td>
+        <td> <%= data[i].integer %> </td>
+        <td> <%= data[i].float %> </td>
+        <td> <%= data[i].date %> </td>
+        <td> <%= data[i].boolean %> </td>
+                <td><a href='edit/<%= data[i].id %>' class="button1"> Edit </a> &nbsp;
+                 <a href="delete/<%= data[i].id %>" class="button2" onclick="return confirm('Are You Sure?');" > Delete </a></td> &nbsp;
+      </tr>
+      <% } %>
+      <% }else { %>
+          <tr>
+            <td colspan="7"> data kosong </td>
+          </tr>
+          <% } %>
+        </tbody>
+  </table>
+  <ul class="pagination">
+    <% if(pagination.page > 1){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page - 1}`) %>">Previous</a></li> <% } %>
+    <% for(let i = 1; i <= pagination.pages; i++){ %>
+    <li class="<%= (pagination.page == i) ? 'active' : ''%>"><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${i}`) %>"><%= i %></a></li>
+    <% } %>
+    <% if(pagination.pages > pagination.page){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page + 1}`) %>">Next</a></li> <% } %>
+  </ul>
+  <p><%= `Showing ${pagination.offset + 1} to ${(pagination.offset + pagination.limit > pagination.total) ? pagination.total : pagination.offset + pagination.limit} of ${pagination.total} ${(pagination.total > 1) ? 'entries' : 'entry'}` %></p>
+
+  <br> <a href="add" button class="btn btn-primary"> ADD </a> </button>
+</div>
+</div>
+  </body>
+  </html>
