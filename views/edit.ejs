@@ -1,0 +1,41 @@
+<% include partials/head %>
+  <% include partials/header %>
+    <div class=container>
+      <form class="" action="" method="POST">
+        <div class="form-group">
+          ID<br>
+          <input class="form-control" type="text" name="id" value="<%= selectedData.id %>" readonly>
+        </div>
+
+        <div class="form-group">
+          <br>String<br>
+          <input class="form-control" type="text" name="datastring" value="<%= selectedData.datastring %>">
+        </div>
+
+        <div class="form-group">
+          <br>Integer<br>
+          <input class="form-control" type="number" name="datainteger" value="<%= selectedData.datainteger %>">
+        </div>
+
+        <div class="form-group">
+          <br>Float<br>
+          <input class="form-control" type="number" name="datafloat" step="0.01" value="<%= selectedData.datafloat %>">
+        </div>
+
+        <div class="form-group">
+          <br>Date<br>
+          <input class="form-control" type="date" name= "datadate"  value="<%=selectedData.datadate %>">
+        </div>
+
+        <div>
+          <br>Boolean<br>
+            <select class="form-control" name="databoolean">
+              <option value="True" <%= selectedData.databoolean === "True" ? ' selected' : '' %> >True</option>
+              <option value="False" <%= selectedData.databoolean  === "False" ? ' selected' : '' %> >False</option>
+          </select>
+        </div>
+        <br><br>
+        <button class="btn btn-primary" type="submit" name="button">Update</button>
+      </form>
+    </div>
+<% include partials/footer %>

@@ -1,0 +1,62 @@
+<% include partials/head %>
+  <% include partials/header %>
+    <% include partials/filter %>
+      <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>String</th>
+            <th>Integer</th>
+            <th>Float</th>
+            <th>Date </th>
+            <th>Boolean </th>
+            <th>Action </th>
+          </tr>
+        </thead>
+        <tbody>
+        <%if (tableData.length > 0) { %>
+          <% for(let i = 0; i<tableData.length; i++) { %>
+            <tr>
+              <td> <%= tableData[i].id %> </td>
+              <td> <%= tableData[i].datastring %> </td>
+              <td> <%= tableData[i].datainteger %> </td>
+              <td> <%= tableData[i].datafloat %> </td>
+              <td> <%= tableData[i].datadate %> </td>
+              <td> <%= (tableData[i].databoolean === 'True') ? 'True' : 'False' %> </td>
+              <td>
+                <a href='/edit/<%= tableData[i].id %>'>
+                  <button class="btn btn-success" type="button" name="button">edit</button>
+                </a>
+                <a href='/delete/<%= tableData[i].id %>'>
+                  <button class="btn btn-danger" type="button" name="button"
+                  onclick="return confirm('Are you sure you want to delete this item?')">
+                    delete
+                  </button>
+                </a>
+              </td>
+            </tr>
+          <% } %>
+        <% } else { %>
+            <tr>
+              <td>DATA NOT FOUND</td>
+            </tr>
+        <% } %>
+
+        </tbody>
+      </table>
+      <br>
+        <a colo'white' href='/add'>
+          <button type="button" class="btn btn-primary">Add</button>
+        </a>
+      <br>
+
+      <ul class="pagination">
+        <% if(pagination.page > 1){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page - 1}`) %>">Previous</a></li> <% } %>
+        <% for(let i = 1; i <= pagination.pages; i++){ %>
+        <li class="<%= (pagination.page == i) ? 'active' : ''%>"><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${i}`) %>"><%= i %></a></li>
+        <% } %>
+        <% if(pagination.pages > pagination.page){ %><li><a href="<%= pagination.url.replace(`/?page=${pagination.page}`, `/?page=${pagination.page + 1}`) %>">Next</a></li> <% } %>
+      </ul>
+      <p><%= `Showing ${pagination.offset + 1} to ${(pagination.offset + pagination.limit > pagination.total) ? pagination.total : pagination.offset + pagination.limit} of ${pagination.total} ${(pagination.total > 1) ? 'entries' : 'entry'}` %></p>
+      <br>
+<% include partials/footer %>

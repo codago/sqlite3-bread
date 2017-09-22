@@ -1,0 +1,78 @@
+<div class="container">
+  <form method="GET">
+    <input type="hidden" name="page" value="<%= pagination.page %>">
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <input class="form-check-input" type="checkbox" name="checkboxid" value="True"
+        <%= query.checkboxid ? 'checked' : '' %> >
+        ID
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" type="number" name="id" value="<%= query.id %>"  placeholder="id">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <input class="form-check-input"  type="checkbox" name="checkboxstring" value="True"
+        <%= query.checkboxstring ? 'checked' : '' %> >
+        String
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" type="text" name="datastring"  value="<%= query.datastring %>" placeholder="string">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <input class="form-check-input"  type="checkbox" name="checkboxinteger" value="True"
+        <%= query.checkboxinteger ? 'checked' : '' %> >
+        Integer</label>
+      <div class="col-sm-10">
+        <input class="form-control" type="number" name="datainteger" value="<%= query.datainteger %>" placeholder="integer">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <input class="form-check-input"  type="checkbox" name="checkboxfloat" value="True"
+        <%= query.checkboxfloat ? 'checked' : '' %> >
+        Float
+      </label>
+      <div class="col-sm-10">
+        <input class="form-control" step="0.01" type="number" name="datafloat" value="<%= query.datafloat %>"  placeholder="float">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <input class="form-check-input" type="checkbox" name="checkboxdate" value="True"
+        <%= query.checkboxdate ? 'checked' : '' %> >
+        Date
+      </label>
+      <div class="col-sm-10">
+        <input type="date" name="startdate" class="form-control" value="<%= query.startdate %>" placeholder="">
+        to
+        <input type="date" name="enddate" class="form-control" value="<%= query.enddate %>" placeholder="">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">
+        <input class="form-check-input"  type="checkbox" name="checkboxboolean" value="True"
+        <%= query.checkboxboolean ? 'checked' : '' %> >
+        Boolean
+      </label>
+      <div class="col-sm-10">
+        <select class="form-control" name="databoolean">
+          <option value="True" <%= query.databoolean == "True" ? ' selected' : '' %> >
+            True
+          </option>
+          <option value="False" <%= query.databoolean == "False" ? ' selected' : '' %> >
+            False
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" name="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
+</div>

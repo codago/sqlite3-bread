@@ -1,0 +1,13 @@
+/* unvisited link */
+a {
+    color: white;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+.bs-docs-nav {
+  background-color: #6f5499
+}
