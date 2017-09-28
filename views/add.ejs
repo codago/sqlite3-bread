@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Add Data</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+  <h1>Add Data</h1>
+
+  <form action="add" method="post" class="form-horizontal" onsubmit="return check()">
+
+    <div class="form-group">
+      <label for="string" class="col-sm-2 control-label">String</label>
+      <div class="col-sm-10">
+        <input type="text" name="string" class="form-control" id="string" placeholder="String">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="integer" class="col-sm-2 control-label">Integer</label>
+      <div class="col-sm-10">
+        <input type="number" name="integer" class="form-control" id="integer" placeholder="Integer">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="float" class="col-sm-2 control-label">Float</label>
+      <div class="col-sm-10">
+        <input type="float" name="float" class="form-control" id="float" placeholder="Float">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="date" class="col-sm-2 control-label">Date</label>
+      <div class="col-sm-10">
+        <input type="date" name="date" class="form-control" id="date" placeholder="">
+      </div>
+    </div>
+
+    
+
+    <div class="form-group">
+      <label for="boolean" class="col-sm-2 control-label">Boolean</label>
+      <div class="col-sm-10">
+        <select name="boolean" class="form-control"  >
+          <option class="form-control" value="true">True</option>
+          <option  class="form-control" value="false">False</option><br/>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-2 control-label"></div>
+      <div class="col-sm-10">
+      </br><button class="btn btn-primary" type="submit" >save</button>
+    </div>
+  </div>
+
+
+
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <title>SQLITE3-BREAD</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body class="container">
+  <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
+  <h2>Filters</h2>
+
+  <form action="/" method="get" class="form-horizontal">
+
+    <div class="form-group">
+      <label for="string" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <div class="checkbox" >
+          <label>
+            <input type="checkbox" name='cek_id'> ID
+          </label>
+        </div><input type="text" name="id" class="form-control" id="id" placeholder="ID">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="string" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"  name='cek_string'> String
+          </label>
+        </div><input type="text" name="string" class="form-control" id="string" placeholder="String">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="integer" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <div class="checkbox" >
+          <label>
+            <input type="checkbox" name='cek_integer'> Integer
+          </label>
+        </div><input type="number" name="integer" class="form-control" id="integer" placeholder="Integer">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="float" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <div class="checkbox" >
+          <label>
+            <input type="checkbox" name='cek_float'> Float
+          </label>
+        </div><input type="float" name="float" class="form-control" id="float" placeholder="Float">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="date" class="col-sm-2 control-label"></label>
+      <div class="col-sm-10">
+        <div class="checkbox" >
+          <label>
+            <input type="checkbox" name='cek_date'> Date
+          </label>
+          <input type="date" name="date" class="form-control" id="date" placeholder="">
+        </div>
+      </div>
+    </div>
+
+
+      <div class="form-group">
+        <label for="boolean" class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+          <div class="checkbox" >
+            <label>
+              <input type="checkbox" name='cek_boolean'> Boolean
+            </label>
+            <select name="boolean" class="form-control"  >
+              <option class="form-control" value="true">True</option>
+              <option  class="form-control" value="false">False</option><br/>
+            </select>
+            <button type="submit" class="btn btn-primary">Search</button>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      </form>
+
+
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>String</th>
+          <th>Integer</th>
+          <th>Float</th>
+          <th>Date</th>
+          <th>Boolean</th>
+          <th>Actions</th>
+        </tr>
+
+        <% for(var i=0; i<data.length; i++) {%>
+          <tr>
+            <td> <%= data[i].id %></td>
+            <td> <%= data[i].string %> </td>
+            <td> <%= data[i].integer %> </td>
+            <td> <%= data[i].float %> </td>
+            <td> <%= data[i].date %> </td>
+
+                        <td> <%= data[i].boolean %> </td>  <td>
+              <button type="submit" class="btn btn-danger" onClick="location.href='edit/<%= data[i].id %>'" value="Submit" a >Edit</button>
+              <!--  <button type="submit" onclick="return confirm('anda yakin?');" class="btn btn-warning" onClick="location.href='delete/<%= data[i].id %>'" value="submit">Delete</button> -->
+              <a href="delete/<%= data[i].id%>"onclick="return confirm('anda yakin?');"><button class="btn btn-success" type="button" name="button">Delete</button></a>
+            </td>
+          </tr>
+          <% } %>
+        </table>
+
+      </head>
+      <body>
+
+
+        <div class="container">
+          <ul class="pagination">
+            <% if(halaman>1){ %>
+              <li><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${halaman-1}`) %>">Prev</a></li>
+              <%}%>
+              <% for(var i=1; i<=jumlahHalaman; i++){  %>
+                <li class="<% if(halaman==i) { %>active<% } %>" ><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${i}`) %>"><%=i%></a></li>
+                <% }%>
+                <% if(halaman<jumlahHalaman){ %>
+                  <li><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${halaman+1}`) %>">Next</a></li>
+                  <%}%>
+                </ul>
+              </div>
+
+
+
+
+
+
+
+
+        <button class="btn btn-success" type="submit" onClick="location.href='add'" value="Submit" a >Add</button>
+
+      </body>
+      </html>
