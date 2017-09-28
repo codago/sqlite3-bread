@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <title>web</title>
+</head>
+<body>
+  <h1>Edit Data</h1>
+  <form class="/edit/<%= data.id %>" method="post">
+    <div class="col-sm-10">
+
+      String <input type="text" name="string" class="form-control" value="<%= data.string %>">
+      <div class="col-sm-10">
+        <label for="inputPassword" class="col-sm-2 control-label"value="<%= data.string %>"></label>
+      </div>
+      <br>
+      Integer <input type="text" name="integer" class="form-control" value="<%= data.integer %>">
+      <div class="col-sm-10">
+        <label for="inputPassword" class="col-sm-2 control-label"value="<%= data.integer %>"></label>
+      </div>
+      <br>
+      Float <input type="text" name="float" class="form-control" value="<%= data.float %>">
+      <div class="col-sm-10">
+        <label for="inputPassword" class="col-sm-2 control-label"value="<%= data.float %>"></label>
+
+      </div>
+      <br>
+      Date <input type="date" name="date" class="form-control" value="<%= data.date %>">
+      <label for="inputPassword" class="col-sm-2 control-label"value="<%= data.date %>"></label>
+      <div class="col-sm-10">
+      </div>
+
+      <br>
+      Boolean
+      <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label"></label>
+        <select name="boolean" class="form-control">
+          <option value="true"<%= data.boolean == "true" ? ' selected' : ''; %>> True </option>
+          <option value="false"<%= data.boolean == "false" ? ' selected' : ''; %>> False </option>
+        </select> <br>
+        <br>    <button type="submit" class ="btn btn-primary"=>Update</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

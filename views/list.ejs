@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+
+  <h1>BREAD(Browse,Read,Edit,Add,Delete)</h1>
+  <h2>Filters</h2>
+  <form class="" action="/" method="get">
+
+
+    <div class="form-group">
+      <label for="inputPassword" class="col-sm-2 control-label"><input name="cek_id" type="checkbox" value="true">ID   </label>
+      <div class="col-sm-10">
+        <input type="text" name="id" class="form-control" id="inputPassword" placeholder="ID">
+
+      </div>
+      <label for="inputPassword" class="col-sm-2 control-label"><input name="cek_string" type="checkbox" value=""> String  </label>
+      <div class="col-sm-10">
+        <input type="text" name="string" class="form-control" id="inputPassword" placeholder="String">
+      </div>
+      <label for="inputPassword" class="col-sm-2 control-label"><input name="cek_integer" type="checkbox" value="">Integer  </label>
+      <div class="col-sm-10">
+        <input type="text" name="integer"class="form-control" id="inputPassword" placeholder="Integer">
+      </div>
+      <label for="inputPassword"class="col-sm-2 control-label"><input name="cek_float" type="checkbox" value="">Float  </label>
+      <div class="col-sm-10">
+        <input type="text" name="float"class="form-control" id="inputPassword" placeholder="Float">
+      </div>
+      <label for="inputPassword" class="col-sm-2 control-label"><input name="cek_date" type="checkbox" value="">Date  </label>
+      <div class="col-sm-10">
+        <input type="date" name="date" class="form-control" id="inputPassword" placeholder="Date">
+      </div>
+      <div class="form-group">
+        <label for="inputPassword" class="col-sm-2 control-label"><input name="cek_boolean" type="checkbox" value="">Boolean </label>
+        <div class="col-sm-10">
+          <select name="boolean" class="form-control">
+            <option class="form-control" value="true">True</option>
+            <<option class="form-control" value="false">False</option>
+          </select>
+
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-primary" name="" value="submit">
+
+    </form>
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>String</th>
+        <th>Integer</th>
+        <th>Float</th>
+        <th>Date</th>
+        <th>Boolean</th>
+        <th>Actions</th>
+      </tr>
+
+      <% for(var i=0; i<data.length; i++) {%>
+        <tr>
+          <td><%= data[i].id %></td>
+          <td><%= data[i].string %></td>
+          <td><%= data[i].integer %></td>
+          <td><%= data[i].float %></td>
+          <td><%= data[i].date %></td>
+          <td><%= data[i].boolean%></td>
+
+          <td><a href='edit/<%= data[i].id %>' class="btn btn-success"> Edit </a> &nbsp;
+            <a href= 'delete/<%= data[i].id%>' class ="btn btn-danger" onclick="return confirm('Asli nih ');" > Delete </button></td>
+            </td>
+
+          </tr>
+          <% } %>
+        </table>
+
+        <!-- pagination -->
+        <ul class="pagination">
+          <% if(halaman>1){ %>
+            <li><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${halaman-1}`) %>">Previous</a></li>
+            <%}%>
+            <% for(let i=1; i<=jumlahHalaman; i++){  %>
+              <li<%= (halaman==i) ? " class=active" : "" %> ><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${i}`) %>"><%=i%></a></li>
+              <% }%>
+              <% if(halaman<jumlahHalaman){ %>
+                <li><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${halaman+1}`) %>">Next</a></li>
+                <%}%>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <a style=="button" class="btn btn-primary" href="add">Add</a>
+
+      </body>
+      </html>
