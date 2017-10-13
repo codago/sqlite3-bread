@@ -76,21 +76,22 @@
 
         <!-- pagination -->
         <ul class="pagination">
-          <% if(halaman>1){ %>
-            <li><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${halaman-1}`) %>">Previous</a></li>
+          <% if(halaman > 1){ %>
+            <li><a href="<%= `${get_link}page=${halaman-1}` %>">Previous</a></li>
             <%}%>
             <% for(let i=1; i<=jumlahHalaman; i++){  %>
-              <li<%= (halaman==i) ? " class=active" : "" %> ><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${i}`) %>"><%=i%></a></li>
+              <li<%= (halaman==i) ? " class=active" : "" %> ><a href="<%= `${get_link}page=${i}` %>"><%=i%></a></li>
               <% }%>
               <% if(halaman<jumlahHalaman){ %>
-                <li><a href="<%= url.replace(`/?page=${halaman}`,`/?page=${halaman+1}`) %>">Next</a></li>
+                <li><a href="<%= `${get_link}page=${halaman+1}` %>">Next</a></li>
                 <%}%>
               </ul>
+
+              <br>
             </div>
           </div>
-        </div>
 
-        <a style=="button" class="btn btn-primary" href="add">Add</a>
+          <a style=="button" class="btn btn-primary" href="add">Add</a>
 
-      </body>
-      </html>
+        </body>
+        </html>

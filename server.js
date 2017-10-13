@@ -56,14 +56,24 @@ app.get('/', function (req, res) {
     bagianWhere.push ( `boolean='${req.query.boolean}'` );
     filter = true;
   }
+  let get_links = req.originalUrl;
+  var the_arr = get_links.split('&page');
+  if(get_links.includes("?page"))
+  the_arr = get_links.split('?page');
+  let get_link = the_arr[0];
 
+  if(get_link.length > 1){
+    get_link = get_link + "&";
+  }else {
+    get_link = get_link + "?";
+  }
   let sql = 'SELECT count(id) AS totalRecord FROM data';
   if(filter){
     sql += ' WHERE ' + bagianWhere.join(' AND ');
   }
   db.all(sql, (err, data) => {
     let totalRecord   = data[0].totalRecord;
-    let limit         = 2;
+    let limit         = 3;
     let offset        = (halaman-1)*limit;
     let jumlahHalaman  = (totalRecord == 0) ? 1 : Math.ceil(totalRecord/limit);
     sql =  `SELECT * FROM data`
@@ -72,7 +82,7 @@ app.get('/', function (req, res) {
     }
     sql+= ` LIMIT ${limit} OFFSET ${offset}`
     db.all(sql, (err, data) => {
-      res.render('list', {title: "SQLITE 3", data:data, halaman:halaman, jumlahHalaman: jumlahHalaman, query: req.query, url:url });
+      res.render('list', {title: "SQLITE 3", data:data, halaman:halaman,get_link:get_link, jumlahHalaman: jumlahHalaman, query: req.query, url:url });
     });
   });
 });
